@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class Tipo {
+public class ZonaPersonalizable {
     private String nombre;
 }
