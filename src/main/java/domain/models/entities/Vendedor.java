@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Vendedor {
     private String nombre;
-    private Tienda tienda;
+    private String apellido;
     private Set<MedioDePago> mediosDePago;
 
     public Vendedor(){
@@ -18,14 +18,6 @@ public class Vendedor {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Tienda getTienda() {
-        return tienda;
-    }
-
-    public void setTienda(Tienda tienda) {
-        this.tienda = tienda;
     }
 
     public Set<MedioDePago> getMediosDePago() {

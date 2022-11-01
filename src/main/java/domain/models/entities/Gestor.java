@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class Gestor {
     private String nombre;
+    private String apellido;
     private String mail;
     private String usuario;
     private String password;

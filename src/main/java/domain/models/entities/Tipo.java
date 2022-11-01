@@ -6,5 +6,5 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Tipo {
-    private String nombre;
+    private String tipo; //Ejemplo: texto, imagenes, emojis
 }

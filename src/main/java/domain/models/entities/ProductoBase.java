@@ -3,15 +3,15 @@ package domain.models.entities;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class Producto {
+public class ProductoBase {
     private String nombre;
     private double precioBase;
     private String descripcion;
     private int tiempoEstimadoDeFabricacion;
-    private Set<Zona> areasDePersonalizacion;
+    private Set<PosiblePersonalizacion> posiblesPersonalizaciones;
 
-    public Producto () {
-        this.areasDePersonalizacion = new LinkedHashSet<>();
+    public ProductoBase() {
+        this.posiblesPersonalizaciones = new LinkedHashSet<>();
     }
 
     public String getNombre() { return nombre; }
@@ -26,12 +26,12 @@ public class Producto {
     public int getTiempoEstimadoDeFabricacion() { return tiempoEstimadoDeFabricacion; }
     public void setTiempoEstimadoDeFabricacion(int tiempoEstimadoDeFabricacion) { this.tiempoEstimadoDeFabricacion = tiempoEstimadoDeFabricacion; }
 
-    public Set<Zona> getAreasDePersonalizacion() {
-        return areasDePersonalizacion;
+    public Set<PosiblePersonalizacion> getAreasDePersonalizacion() {
+        return posiblesPersonalizaciones;
     }
 
-    public void agregarAreaDePersonalizacion(Zona zona) {
-        this.areasDePersonalizacion.add(zona);
+    public void agregarAreaDePersonalizacion(PosiblePersonalizacion posiblePersonalizacion) {
+        this.posiblesPersonalizaciones.add(posiblePersonalizacion);
     }
 
 }

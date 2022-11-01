@@ -4,7 +4,7 @@ import domain.models.entities.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TestProductoPersonalizado {
+public class TestProductoPersonalizadoBase {
     @Test
     public void agregarDosPersonalizaciones() {
         ProductoPersonalizado productoPersonalizado = new ProductoPersonalizado();
@@ -25,8 +25,8 @@ public class TestProductoPersonalizado {
     @Test
     public void calcularPrecioFinal() {
         ProductoPersonalizado productoPersonalizado = new ProductoPersonalizado();
-        Producto unProducto = new Producto();
-        unProducto.setPrecioBase(10.6);
+        ProductoBase unProductoBase = new ProductoBase();
+        unProductoBase.setPrecioBase(10.6);
 
         Personalizacion unaPersonalizacion = new Personalizacion();
         TipoPersonalizable unTipoPersonalizable = new TipoPersonalizable();
@@ -38,7 +38,7 @@ public class TestProductoPersonalizado {
         otroTipoPersonalizable.setPrecio(50.4);
         otraPersonalizacion.setTipo(otroTipoPersonalizable);
 
-        productoPersonalizado.setProductoBase(unProducto);
+        productoPersonalizado.setProductoBase(unProductoBase);
         productoPersonalizado.agregarPersonalizacion(unaPersonalizacion);
         productoPersonalizado.agregarPersonalizacion(otraPersonalizacion);
 

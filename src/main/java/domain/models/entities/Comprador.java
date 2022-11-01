@@ -6,6 +6,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Comprador {
-    private int id;
-    private CarritoDeCompra carritoDeCompra;
+    private String nombre;
+    private String apellido;
+
+    // agregagr datos facturacion
+
 }

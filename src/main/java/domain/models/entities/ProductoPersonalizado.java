@@ -5,15 +5,15 @@ import java.util.Set;
 
 public class ProductoPersonalizado {
 
-    private Producto productoBase;
+    private ProductoBase productoBase;
     private Set<Personalizacion> personalizaciones;
     private double precioFinal;
 
-    public Producto getProductoBase() {
+    public ProductoBase getProductoBase() {
         return productoBase;
     }
 
-    public void setProductoBase(Producto productoBase) {
+    public void setProductoBase(ProductoBase productoBase) {
         this.productoBase = productoBase;
     }
 
@@ -34,7 +34,8 @@ public class ProductoPersonalizado {
     }
 
     public void setPrecioFinal() {
-        double sumaPrecios = personalizaciones.stream().mapToDouble(o -> o.getTipo().getPrecio()).sum();
+        double sumaPrecios = personalizaciones.stream().mapToDouble(o -> o.getPrecio()).sum();
         this.precioFinal = productoBase.getPrecioBase() + sumaPrecios;
+        //TODO - Ahí creo que estaría la funcion pero revisemosla, tuve que cambiarla porque al cambiar las clases cambió
     }
 }

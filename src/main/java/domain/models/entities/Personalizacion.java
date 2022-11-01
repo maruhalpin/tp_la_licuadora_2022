@@ -7,6 +7,8 @@ import lombok.Setter;
 @Setter
 public class Personalizacion {
     private String nombre;
-    private ZonaPersonalizable zonaPersonalizable;
-    private TipoPersonalizable tipo;
+    private double precio;
+    private PosiblePersonalizacion posiblePerzonalizacion;
+    private String contenido;
+
 }
