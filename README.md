@@ -1,4 +1,4 @@
-La licuadora - 2022
+La Licuadora - 2022
 
 Integrantes:
 * Felipe Mattei
