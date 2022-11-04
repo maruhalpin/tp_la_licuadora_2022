@@ -1,6 +1,6 @@
 package domain.models.entities;
 
-public enum Estado {
+public enum EstadoPublicacion {
     ACTIVA,
     PAUSADA,
     CANCELADA
