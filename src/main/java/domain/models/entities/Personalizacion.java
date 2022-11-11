@@ -22,7 +22,7 @@ public class Personalizacion {
     private double precio;
 
     @OneToOne
-    @Column(name="posiblePersonalizacion")
+    @JoinColumn(name = "posiblePerzonalizacion_id", referencedColumnName = "id")
     private PosiblePersonalizacion posiblePerzonalizacion;
 
     @Column(name="contenido")

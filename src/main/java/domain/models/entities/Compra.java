@@ -25,7 +25,7 @@ public class Compra {
     private List<Item> items;
 
     @ManyToOne
-    @Column(name = "formaDePago")
+    @JoinColumn(name = "formaDePago_id", referencedColumnName = "id")
     private MedioDePago formaDePago;
 
     @Enumerated(EnumType.STRING)

@@ -15,11 +15,11 @@ public class PosiblePersonalizacion {
     private Long id;
 
     @ManyToOne
-    @Column(name="zona")
+    @JoinColumn(name = "zona_id", referencedColumnName = "id")
     private Zona zona;
 
     @ManyToOne
-    @Column(name="tipo")
+    @JoinColumn(name = "tipo_id", referencedColumnName = "id")
     private Tipo tipo;
 
 }

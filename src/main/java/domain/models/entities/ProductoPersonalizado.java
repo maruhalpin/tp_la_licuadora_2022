@@ -13,7 +13,7 @@ public class ProductoPersonalizado {
     private Long id;
 
     @ManyToOne
-    @Column(name = "productoBase")
+    @JoinColumn(name = "productoBase_id", referencedColumnName = "id")
     private ProductoBase productoBase;
 
     @ManyToMany

@@ -14,8 +14,10 @@ public class Vendedor {
 
     @Column(name="nombre")
     private String nombre;
+
     @Column(name="apellido")
     private String apellido;
+
     @ManyToMany
     @Column(name="mediosDePago")
     private Set<MedioDePago> mediosDePago;

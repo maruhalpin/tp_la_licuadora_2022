@@ -15,7 +15,7 @@ public class Tienda {
     private String nombre;
 
     @OneToMany
-    @Column(name="publicaciones")
+    @JoinColumn(name = "publicaciones_id", referencedColumnName = "id")
     private List<Publicacion> publicaciones;
 
     public Tienda() {
