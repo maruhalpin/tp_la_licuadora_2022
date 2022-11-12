@@ -1,5 +1,7 @@
 package domain.models.entities;
 
+import org.springframework.data.rest.core.annotation.RestResource;
+
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -27,6 +29,10 @@ public class ProductoBase {
     @ManyToMany
     @Column(name="posiblesPersonalizaciones")
     private Set<PosiblePersonalizacion> posiblesPersonalizaciones;
+
+    public ProductoBase(String nombre) {
+        this.nombre = nombre;
+    }
 
     public ProductoBase() {
         this.posiblesPersonalizaciones = new LinkedHashSet<>();

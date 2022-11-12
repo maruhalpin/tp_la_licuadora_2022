@@ -15,6 +15,12 @@ public class Tipo {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name="tipo")
-    private String tipo; //Ejemplo: texto, imagenes, emojis
+    @Column(name="nombre")
+    private String nombre; //Ejemplo: texto, imagenes, emojis
+
+    public Tipo(){ }
+
+    public Tipo(String nombre){
+        this.nombre = nombre;
+    }
 }

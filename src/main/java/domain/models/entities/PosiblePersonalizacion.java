@@ -14,6 +14,9 @@ public class PosiblePersonalizacion {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "prueba")
+    private String prueba;
+
     @ManyToOne
     @JoinColumn(name = "zona_id", referencedColumnName = "id")
     private Zona zona;
@@ -22,4 +25,15 @@ public class PosiblePersonalizacion {
     @JoinColumn(name = "tipo_id", referencedColumnName = "id")
     private Tipo tipo;
 
+    public PosiblePersonalizacion(Zona zona) {
+        this.zona = zona;
+    }
+
+    public PosiblePersonalizacion() { }
+
+    public PosiblePersonalizacion(Zona zona, Tipo tipo) {
+        this.zona = zona;
+        this.tipo = tipo;
+
+    }
 }

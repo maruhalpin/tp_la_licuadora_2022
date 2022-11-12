@@ -17,4 +17,10 @@ public class Zona {
 
     @Column(name = "nombre")
     private String nombre;
+
+    public Zona(){ }
+
+    public Zona(String nombre){
+        this.nombre = nombre;
+    }
 }
