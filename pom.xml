@@ -6,6 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>tp_la_licuadora_2022</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <parent>

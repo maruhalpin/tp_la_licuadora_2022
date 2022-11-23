@@ -52,8 +52,8 @@ public class ProductoPersonalizado {
         return precioFinal;
     }
     public void setPrecioFinal() {
-        double sumaPrecios = personalizaciones.stream().mapToDouble(o -> o.getPrecio()).sum();
+        /*double sumaPrecios = personalizaciones.stream().mapToDouble(o -> o.getPrecio()).sum();
         this.precioFinal = productoBase.getPrecioBase() + sumaPrecios;
-        //TODO - Ahí creo que estaría la funcion pero revisemosla, tuve que cambiarla porque al cambiar las clases cambió
+        //TODO - Ahí creo que estaría la funcion pero revisemosla, tuve que cambiarla porque al cambiar las clases cambió*/
     }
 }
