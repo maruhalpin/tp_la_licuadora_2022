@@ -1,18 +1,15 @@
 package domain.app;
 
-import domain.models.entities.PosiblePersonalizacion;
-import domain.models.entities.ProductoBase;
+import domain.entities.PosiblePersonalizacion;
+import domain.entities.ProductoBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @RepositoryRestController

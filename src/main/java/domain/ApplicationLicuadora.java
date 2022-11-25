@@ -1,7 +1,7 @@
 package domain;
 
 import domain.app.RepoProductoBaseJPA;
-import domain.models.entities.ProductoBase;
+import domain.entities.ProductoBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

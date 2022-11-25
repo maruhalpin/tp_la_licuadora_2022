@@ -1,6 +1,6 @@
 package domain.app;
 
-import domain.models.entities.ProductoBase;
+import domain.entities.ProductoBase;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

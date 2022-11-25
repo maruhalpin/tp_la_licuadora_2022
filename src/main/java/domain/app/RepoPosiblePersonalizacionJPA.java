@@ -1,7 +1,7 @@
 package domain.app;
 
-import domain.models.entities.PosiblePersonalizacion;
-import domain.models.entities.Zona;
+import domain.entities.PosiblePersonalizacion;
+import domain.entities.Zona;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
