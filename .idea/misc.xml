@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/msproductopersonalizado/pom.xml" />
         <option value="$PROJECT_DIR$/msproductobase/pom.xml" />
         <option value="$PROJECT_DIR$/servidornombres/pom.xml" />
+        <option value="$PROJECT_DIR$/gateway/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
