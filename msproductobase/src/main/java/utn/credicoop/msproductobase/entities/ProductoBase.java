@@ -1,6 +1,6 @@
 package utn.credicoop.msproductobase.entities;
 
-import utn.credicoop.msproductobase.app.ProductoBaseDTO;
+import utn.credicoop.msproductobase.app.dtos.ProductoBaseDTO;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;

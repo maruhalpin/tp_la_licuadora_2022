@@ -1,9 +1,10 @@
-package utn.credicoop.msproductobase.app;
+package utn.credicoop.msproductobase.app.dtos;
 
 import utn.credicoop.msproductobase.entities.PosiblePersonalizacion;
 import utn.credicoop.msproductobase.entities.ProductoBase;
 
 import java.util.LinkedHashSet;
+import java.util.Optional;
 import java.util.Set;
 
 public class ProductoBaseDTO {
@@ -24,6 +25,15 @@ public class ProductoBaseDTO {
         this.descripcion = descripcion;
         this.tiempoEstimadoDeFabricacion = tiempoEstimadoDeFabricacion;
         this.posiblesPersonalizaciones = new LinkedHashSet<>();
+    }
+
+    public ProductoBaseDTO(Optional<ProductoBase> productoBaseOptional){
+        this.id = productoBaseOptional.get().getId();
+        this.nombre = productoBaseOptional.get().getNombre();
+        this.precioBase = productoBaseOptional.get().getPrecioBase();
+        this.descripcion = productoBaseOptional.get().getDescripcion();
+        this.tiempoEstimadoDeFabricacion = productoBaseOptional.get().getTiempoEstimadoDeFabricacion();
+        this.posiblesPersonalizaciones = productoBaseOptional.get().getPosiblesPersonalizaciones();
     }
 
     public Long getId() {

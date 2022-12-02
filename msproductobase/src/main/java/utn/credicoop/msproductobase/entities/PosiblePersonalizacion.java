@@ -10,9 +10,6 @@ public class PosiblePersonalizacion {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "prueba")
-    private String prueba;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "zona_id", referencedColumnName = "id")
     private Zona zona;
@@ -38,14 +35,6 @@ public class PosiblePersonalizacion {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getPrueba() {
-        return prueba;
-    }
-
-    public void setPrueba(String prueba) {
-        this.prueba = prueba;
     }
 
     public Zona getZona() {
