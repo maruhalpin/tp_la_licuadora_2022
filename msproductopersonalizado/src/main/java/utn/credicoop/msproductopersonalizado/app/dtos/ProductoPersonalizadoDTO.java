@@ -10,9 +10,6 @@ import java.util.Set;
 
 public class ProductoPersonalizadoDTO {
 
-    @Autowired
-    ProductoBaseProxy proxy;
-
     private Long id;
     private Long idProductoBase;
     private Set<Personalizacion> personalizaciones;
@@ -22,7 +19,7 @@ public class ProductoPersonalizadoDTO {
         this.id = id;
         this.idProductoBase = idProductoBase;
         this.personalizaciones = personalizaciones;
-        this.setPrecioFinal();
+        this.precioFinal = precioFinal;
     }
 
     public ProductoPersonalizadoDTO() {
@@ -52,18 +49,6 @@ public class ProductoPersonalizadoDTO {
     public double getPrecioFinal() {
         return precioFinal;
     }
-    public void setPrecioFinal() {
-        double precioBase = proxy.buscarPorId(idProductoBase).getPrecioBase();
-        double sumaPrecios = personalizaciones.stream().mapToDouble(o -> o.getPrecio()).sum();
-        this.precioFinal = precioBase + sumaPrecios;
-        //TODO - Ahí creo que estaría la funcion pero revisemosla, tuve que cambiarla porque al cambiar las clases cambió*/
-    }
+    public void setPrecioFinal(double precioFinal) { this.precioFinal = precioFinal; }
 
-    public ProductoBaseProxy getProxy() {
-        return proxy;
-    }
-
-    public void setProxy(ProductoBaseProxy proxy) {
-        this.proxy = proxy;
-    }
 }

@@ -12,10 +12,6 @@ import java.util.Set;
 @Table(name = "ProductoPersonalizado")
 public class ProductoPersonalizado {
 
-    @Transient
-    @Autowired
-    ProductoBaseProxy proxy;
-
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
@@ -34,7 +30,7 @@ public class ProductoPersonalizado {
         this.id = id;
         this.idProductoBase = idProductoBase;
         this.personalizaciones = personalizaciones;
-        this.setPrecioFinal();
+        this.precioFinal = precioFinal;
     }
 
     public ProductoPersonalizado() {
@@ -72,9 +68,9 @@ public class ProductoPersonalizado {
     public double getPrecioFinal() {
         return precioFinal;
     }
-    public void setPrecioFinal() {
-        //double precioBase = proxy.buscarPorId(idProductoBase).getPrecioBase();
-        double sumaPrecios = personalizaciones.stream().mapToDouble(o -> o.getPrecio()).sum();
-        this.precioFinal = /*precioBase + */ sumaPrecios;
+    public void setPrecioFinal(double precioFinal) { this.precioFinal = precioFinal; }
+
+    public void calcularPrecioFinal(double precioProductoBase){
+        setPrecioFinal(precioProductoBase);
     }
 }
