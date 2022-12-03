@@ -14,9 +14,10 @@ public class Item {
         @Column(name = "id", nullable = false)
         private Long id;
 
-        @ManyToOne
-        @JoinColumn(name = "producto_id", referencedColumnName = "id")
-        private ProductoPersonalizado producto;
+/*      @ManyToOne
+        @JoinColumn(name = "producto_id", referencedColumnName = "id")*/
+        @Column(name="id_producto_personalizado")
+        private Long idProductoPersonalizado;
 
         @Column(name = "cantidad")
         private int cantidad;

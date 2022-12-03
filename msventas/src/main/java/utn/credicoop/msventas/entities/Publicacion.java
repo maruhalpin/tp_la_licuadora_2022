@@ -17,9 +17,11 @@ public class Publicacion {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "productoPersonalizado_id", referencedColumnName = "id")
-    private ProductoPersonalizado productoPersonalizado;
+/*  @ManyToOne
+    @JoinColumn(name = "productoPersonalizado_id", referencedColumnName = "id") */
+
+    @Column(name="id_producto_personalizado")
+    private Long idProductoPersonalizado;
 
     @Enumerated(EnumType.STRING)
     @Column(name="estado")
