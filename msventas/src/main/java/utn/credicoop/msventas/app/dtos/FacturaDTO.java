@@ -7,7 +7,6 @@ import utn.credicoop.msventas.entities.MedioDePago;
 
 public class FacturaDTO {
 
-    public String status;
     public double importe;
     public Comprador datosComprador;
     public CarritoDeCompra carrito;
@@ -16,24 +15,11 @@ public class FacturaDTO {
     public FacturaDTO() {
     }
 
-    public FacturaDTO(String status, double importe, CarritoDeCompra carrito, MedioDePago medioDePago, Comprador datosComprador) {
-        this.status = status;
+    public FacturaDTO(double importe, CarritoDeCompra carrito, MedioDePago medioDePago, Comprador datosComprador) {
         this.importe = importe;
         this.carrito = carrito;
         this.medioDePago = medioDePago;
         this.datosComprador = datosComprador;
-    }
-
-    public FacturaDTO(String status){
-        this.status = status;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public double getImporte() {

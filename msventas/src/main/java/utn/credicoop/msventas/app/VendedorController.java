@@ -54,7 +54,7 @@ public class VendedorController {
             Compra compra = new Compra(compraOptional);
             compra.generarFactura();
             compraJPA.save(compra);
-            FacturaDTO facturaDTO = new FacturaDTO("OK", compraOptional.get().getCarritoDeCompra().getPrecioFinal(), compraOptional.get().getCarritoDeCompra(), compraOptional.get().getFormaDePago(), compraOptional.get().getCarritoDeCompra().getComprador());
+            FacturaDTO facturaDTO = new FacturaDTO(compraOptional.get().getCarritoDeCompra().getPrecioFinal(), compraOptional.get().getCarritoDeCompra(), compraOptional.get().getFormaDePago(), compraOptional.get().getCarritoDeCompra().getComprador());
             return facturaDTO;
         } else {
             throw new Exception("No existe el id compra (" + id + ") para generar factura.");
