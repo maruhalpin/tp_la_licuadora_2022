@@ -48,7 +48,7 @@ public class VendedorController {
     }
 
     @PostMapping("/vendedor/compra/{idCompra}/generarfactura")
-    public @ResponseBody FacturaDTO generarFactura(@PathVariable("idCompra") Long id){
+    public @ResponseBody FacturaDTO generarFactura(@PathVariable("idCompra") Long id) throws Exception {
         if(compraJPA.existsById(id)){
             Optional<Compra> compraOptional = compraJPA.findById(id);
             Compra compra = new Compra(compraOptional);
@@ -57,7 +57,7 @@ public class VendedorController {
             FacturaDTO facturaDTO = new FacturaDTO("OK", compraOptional.get().getCarritoDeCompra().getPrecioFinal(), compraOptional.get().getCarritoDeCompra(), compraOptional.get().getFormaDePago(), compraOptional.get().getCarritoDeCompra().getComprador());
             return facturaDTO;
         } else {
-            return new FacturaDTO("No se pudo generar la factura, compra inexistente.");
+            throw new Exception("No existe el id compra (" + id + ") para generar factura.");
         }
     }
 
