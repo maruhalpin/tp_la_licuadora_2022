@@ -12,34 +12,13 @@ import java.util.List;
 
 public class CarritoDeCompraDTO {
 
-    private Long id;
-    private CompradorDTO comprador;
-    private List<ItemDTO> items;
-    private double precioFinal;
+    private Comprador comprador;
 
-    public CarritoDeCompraDTO(){
-        this.items = new ArrayList<>();
+    public Comprador getComprador() {
+        return comprador;
     }
 
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public List<ItemDTO> getItems() {
-        return items;
-    }
-    public void setItems(List<ItemDTO> items) { this.items = items; }
-    public void agregarItems(ItemDTO item) {
-        this.items.add(item);
-    }
-
-    public double getPrecioFinal() {
-        return precioFinal;
-    }
-    public void setPrecioFinal(double precioFinal) {
-        this.precioFinal = precioFinal;
+    public void setComprador(Comprador comprador) {
+        this.comprador = comprador;
     }
 }

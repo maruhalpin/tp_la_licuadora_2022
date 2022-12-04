@@ -1,26 +1,47 @@
 package utn.credicoop.msventas.app.dtos;
 
 import utn.credicoop.msventas.entities.EstadoCompra;
+import utn.credicoop.msventas.entities.Item;
+import utn.credicoop.msventas.entities.MedioDePago;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class CompraDTO {
 
-    private Long id;
-    private LocalDate fecha;
-    private LocalTime hora;
-    private List<ItemDTO> items;
-    private MedioDePagoDTO formaDePago;
-    private EstadoCompra estado;
-    private LocalDate fechaCambioEstado;
+    private MedioDePago formaDePago;
+    private List<Item> items;
 
     public CompraDTO (){
-        this.items = new ArrayList<>();
+
     }
 
+    public MedioDePago getFormaDePago() {
+        return formaDePago;
+    }
+
+    public void setFormaDePago(MedioDePago formaDePago) {
+        this.formaDePago = formaDePago;
+    }
+
+    public LocalDate getFechaActual(){ return LocalDate.now(); }
+
+    public LocalTime getHoraActual(){
+        return LocalTime.now();
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+    public void setItems(List<Item> items) { this.items = items; }
+    public void agregarItems(Item item) {
+        this.items.add(item);
+    }
+
+/*
     public LocalDate getFecha() {
         return fecha;
     }
@@ -43,13 +64,6 @@ public class CompraDTO {
         this.items.add(item);
     }
 
-    public MedioDePagoDTO getFormaDePago() {
-        return formaDePago;
-    }
-    public void setFormaDePago(MedioDePagoDTO formaDePago) {
-        this.formaDePago = formaDePago;
-    }
-
     public EstadoCompra getEstado() {
         return estado;
     }
@@ -69,5 +83,5 @@ public class CompraDTO {
     }
     public void setId(Long id) {
         this.id = id;
-    }
+    }*/
 }

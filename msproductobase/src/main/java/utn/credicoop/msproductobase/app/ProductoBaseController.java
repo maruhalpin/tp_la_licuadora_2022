@@ -27,7 +27,7 @@ public class ProductoBaseController {
         if(!productoBaseJPA.existsById(productoBaseDTO.getId())){
             ProductoBase producto = new ProductoBase(productoBaseDTO);
             productoBaseJPA.save(producto);
-            return new ResponseEntity<>("Agregado el producto: " + productoBaseDTO.getNombre(), HttpStatus.OK);
+            return new ResponseEntity<>("Agregado el producto: " + productoBaseDTO.getNombre() + " - " + puerto, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("ID Duplicado", HttpStatus.CONFLICT);
         }

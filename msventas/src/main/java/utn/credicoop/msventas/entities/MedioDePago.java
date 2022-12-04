@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="MedioDePago")
@@ -15,6 +17,13 @@ public class MedioDePago {
 
     @Column(name="nombre")
     private String nombre;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Vendedor> vendedor;
+
+    public MedioDePago(){
+        this.vendedor = new LinkedHashSet<>();
+    }
 
     public Long getId() {
         return id;
@@ -30,5 +39,13 @@ public class MedioDePago {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Set<Vendedor> getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Set<Vendedor> vendedor) {
+        this.vendedor = vendedor;
     }
 }

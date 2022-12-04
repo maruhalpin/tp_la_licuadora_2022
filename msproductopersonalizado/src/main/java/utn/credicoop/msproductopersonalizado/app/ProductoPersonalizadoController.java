@@ -29,7 +29,6 @@ public class ProductoPersonalizadoController {
             boolean existeProductoBase = proxy.existeProductoBase(productoPersonalizadoDTO.getIdProductoBase());
             if(existeProductoBase) {
                 ProductoBaseDTO productoBaseAsociado = proxy.buscarPorId(productoPersonalizadoDTO.getIdProductoBase());
-
                 ProductoPersonalizado producto = new ProductoPersonalizado(productoPersonalizadoDTO);
                 producto.calcularPrecioFinal(productoBaseAsociado.getPrecioBase());
                 productoPersonalizadoJPA.save(producto);

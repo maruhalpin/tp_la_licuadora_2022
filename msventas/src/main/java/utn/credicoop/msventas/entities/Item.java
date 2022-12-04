@@ -2,23 +2,40 @@ package utn.credicoop.msventas.entities;
 
 import lombok.Getter;
 import lombok.Setter;
+import utn.credicoop.msventas.app.dtos.ItemDTO;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Item")
 public class Item {
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "id", nullable = false)
         private Long id;
 
-/*      @ManyToOne
-        @JoinColumn(name = "producto_id", referencedColumnName = "id")*/
-        @Column(name="id_producto_personalizado")
-        private Long idProductoPersonalizado;
+        @OneToOne
+        @JoinColumn(name = "publicacion_id", referencedColumnName = "id")
+        private Publicacion publicacion;
 
         @Column(name = "cantidad")
         private int cantidad;
+
+        @Column(name = "precio")
+        private double precioFinal;
+
+        public Item(){}
+
+        public Item(Long id, Publicacion publicacion, int cantidad, double precioFinal) {
+                this.id = id;
+                this.publicacion = publicacion;
+                this.cantidad = cantidad;
+                this.precioFinal = precioFinal;
+        }
+
+        public Item(ItemDTO itemDTO){
+                this.cantidad = itemDTO.getCantidad();
+        }
 
         public Long getId() {
                 return id;
@@ -28,12 +45,12 @@ public class Item {
                 this.id = id;
         }
 
-        public Long getIdProductoPersonalizado() {
-                return idProductoPersonalizado;
+        public Publicacion getPublicacion() {
+                return publicacion;
         }
 
-        public void setIdProductoPersonalizado(Long idProductoPersonalizado) {
-                this.idProductoPersonalizado = idProductoPersonalizado;
+        public void setPublicacion(Publicacion publicacion) {
+                this.publicacion = publicacion;
         }
 
         public int getCantidad() {
@@ -43,4 +60,17 @@ public class Item {
         public void setCantidad(int cantidad) {
                 this.cantidad = cantidad;
         }
+
+        public double getPrecioFinal() {
+                return precioFinal;
+        }
+
+        public void setPrecioFinal(double precioFinal) {
+                this.precioFinal = precioFinal;
+        }
+
+        public void calcularPrecioFinal(double precioPublicacion){
+                this.setPrecioFinal(cantidad * precioPublicacion);
+        }
+
 }

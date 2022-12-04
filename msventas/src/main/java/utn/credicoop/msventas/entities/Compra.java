@@ -1,5 +1,6 @@
 package utn.credicoop.msventas.entities;
 
+import utn.credicoop.msventas.app.dtos.CompraDTO;
 import utn.credicoop.msventas.converters.LocalDateAttributeConverter;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name="Compra")
@@ -22,10 +24,11 @@ public class Compra {
     @Column(name = "hora")
     private LocalTime hora;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Item> items; // Cambiar por carrito
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "carrito_id", referencedColumnName = "id")
+    private CarritoDeCompra carritoDeCompra;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "forma_de_pago_id", referencedColumnName = "id")
     private MedioDePago formaDePago;
 
@@ -37,8 +40,20 @@ public class Compra {
     @Convert(converter = LocalDateAttributeConverter.class)
     private LocalDate fechaCambioEstado;
 
-    public Compra (){
-        this.items = new ArrayList<>();
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "vendedor_id", referencedColumnName = "id")
+    private Vendedor vendedor;
+
+    public Compra (){ }
+
+    public Compra (CarritoDeCompra carritoDeCompraOptional, MedioDePago nombre, Vendedor vendedor) {
+        this.formaDePago = nombre;
+        this.fecha = this.getFechaActual();
+        this.hora = this.getHoraActual();
+        this.carritoDeCompra = carritoDeCompraOptional;
+        this.estado = EstadoCompra.PENDIENTE;
+        this.fechaCambioEstado = this.getFechaActual();
+        this.vendedor = vendedor;
     }
 
     public LocalDate getFecha() {
@@ -55,12 +70,6 @@ public class Compra {
         this.hora = hora;
     }
 
-    public List<Item> getItems() {
-        return items;
-    }
-    public void agregarItems(Item item) {
-        this.items.add(item);
-    }
 
     public MedioDePago getFormaDePago() {
         return formaDePago;
@@ -88,5 +97,27 @@ public class Compra {
     }
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public LocalDate getFechaActual(){ return LocalDate.now(); }
+
+    public LocalTime getHoraActual(){
+        return LocalTime.now();
+    }
+
+    public CarritoDeCompra getCarritoDeCompra() {
+        return carritoDeCompra;
+    }
+
+    public void setCarritoDeCompra(CarritoDeCompra carritoDeCompra) {
+        this.carritoDeCompra = carritoDeCompra;
     }
 }

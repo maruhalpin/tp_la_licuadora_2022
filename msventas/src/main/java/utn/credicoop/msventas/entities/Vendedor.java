@@ -20,7 +20,7 @@ public class Vendedor {
     @Column(name="apellido")
     private String apellido;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<MedioDePago> mediosDePago;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

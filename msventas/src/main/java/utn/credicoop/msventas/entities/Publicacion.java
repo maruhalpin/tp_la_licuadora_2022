@@ -6,10 +6,12 @@ import utn.credicoop.msventas.converters.LocalDateAttributeConverter;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Optional;
 
 @Entity
 @Table(name="Publicacion")
 public class Publicacion {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -40,6 +42,9 @@ public class Publicacion {
     @JoinColumn(name = "tienda_id", referencedColumnName = "id")
     private Tienda tiendaAsociada;*/
 
+    @Column(name="precio")
+    private double precio;
+
     @Column(name="id_tienda_asociada")
     private Long idTiendaAsociada;
 
@@ -54,6 +59,17 @@ public class Publicacion {
         this.fechaDeBaja = null;
         this.horaDeBaja = null;
         this.idTiendaAsociada = this.getIdTiendaAsociada();
+    }
+
+    public Publicacion(Optional<Publicacion> optionalPublicacion){
+        this.id = optionalPublicacion.get().getId();
+        this.idProductoPersonalizado = optionalPublicacion.get().getIdProductoPersonalizado();
+        this.estadoPublicacion = optionalPublicacion.get().getEstadoPublicacion();
+        this.horaDeSubida = optionalPublicacion.get().getHoraDeSubida();
+        this.fechaDeSubida = optionalPublicacion.get().getFechaDeSubida();
+        this.fechaDeBaja = optionalPublicacion.get().getFechaDeBaja();
+        this.horaDeBaja = optionalPublicacion.get().getHoraDeBaja();
+        this.idTiendaAsociada = optionalPublicacion.get().getIdTiendaAsociada();
     }
 
     public Long getId() {
@@ -118,5 +134,39 @@ public class Publicacion {
 
     public void setIdTiendaAsociada(Long idTiendaAsociada) {
         this.idTiendaAsociada = idTiendaAsociada;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public void bajarPublicacion(){
+        this.setEstadoPublicacion(EstadoPublicacion.CANCELADA);
+        this.setFechaDeBaja(this.getFechaActual());
+        this.setHoraDeBaja(this.getHoraActual());
+    }
+
+    public void pausarPublicacion(){
+        this.setEstadoPublicacion(EstadoPublicacion.PAUSADA);
+    }
+
+    public void activarPublicacion(){
+        this.setEstadoPublicacion(EstadoPublicacion.ACTIVA);
+        this.setFechaDeBaja(null);
+        this.setHoraDeBaja(null);
+    }
+
+    public boolean sePuedeComprar(){
+        return this.getEstadoPublicacion() == EstadoPublicacion.ACTIVA;
+    }
+
+    public LocalDate getFechaActual(){ return LocalDate.now(); }
+
+    public LocalTime getHoraActual(){
+        return LocalTime.now();
     }
 }

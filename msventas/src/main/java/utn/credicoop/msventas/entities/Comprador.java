@@ -21,6 +21,15 @@ public class Comprador {
 
     // agregar datos facturacion
 
+    public Comprador(){
+
+    }
+
+    public Comprador(Long id, String nombre, String apellido) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
 
     public Long getId() {
         return id;
