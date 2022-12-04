@@ -4,16 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import utn.credicoop.msventas.app.dtos.FacturaDTO;
 import utn.credicoop.msventas.app.dtos.VendedorDTO;
 import utn.credicoop.msventas.db.CompraJPA;
 import utn.credicoop.msventas.db.VendedorJPA;
 import utn.credicoop.msventas.entities.Compra;
+import utn.credicoop.msventas.entities.EstadoCompra;
 import utn.credicoop.msventas.entities.Tienda;
 import utn.credicoop.msventas.entities.Vendedor;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -41,6 +44,20 @@ public class VendedorController {
             return new ResponseEntity<>(comprasAlVendedor.toString(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>("No se pudo realizar la operación de compra, el vendedor no acepta ese medio de pago.", HttpStatus.OK);
+        }
+    }
+
+    @PostMapping("/vendedor/compra/{idCompra}/generarfactura")
+    public @ResponseBody FacturaDTO generarFactura(@PathVariable("idCompra") Long id){
+        if(compraJPA.existsById(id)){
+            Optional<Compra> compraOptional = compraJPA.findById(id);
+            Compra compra = new Compra(compraOptional);
+            compra.generarFactura();
+            compraJPA.save(compra);
+            FacturaDTO facturaDTO = new FacturaDTO("OK", compraOptional.get().getCarritoDeCompra().getPrecioFinal(), compraOptional.get().getCarritoDeCompra(), compraOptional.get().getFormaDePago(), compraOptional.get().getCarritoDeCompra().getComprador());
+            return facturaDTO;
+        } else {
+            return new FacturaDTO("No se pudo generar la factura, compra inexistente.");
         }
     }
 

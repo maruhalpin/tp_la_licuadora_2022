@@ -84,4 +84,5 @@ public class Vendedor {
         tienda.setIdVendedor(this.getId());
         this.setTienda(tienda);
     }
+
 }

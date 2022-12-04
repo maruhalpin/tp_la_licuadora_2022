@@ -56,6 +56,17 @@ public class Compra {
         this.vendedor = vendedor;
     }
 
+    public Compra(Optional<Compra> compraOptional){
+        this.id = compraOptional.get().getId();
+        this.formaDePago = compraOptional.get().getFormaDePago();
+        this.fecha = compraOptional.get().getFecha();
+        this.hora = compraOptional.get().getHora();
+        this.carritoDeCompra = compraOptional.get().getCarritoDeCompra();
+        this.estado = compraOptional.get().getEstado();
+        this.fechaCambioEstado = compraOptional.get().getFechaCambioEstado();
+        this.vendedor = compraOptional.get().getVendedor();
+    }
+
     public LocalDate getFecha() {
         return fecha;
     }
@@ -119,5 +130,10 @@ public class Compra {
 
     public void setCarritoDeCompra(CarritoDeCompra carritoDeCompra) {
         this.carritoDeCompra = carritoDeCompra;
+    }
+
+    public void generarFactura(){
+        this.setEstado(EstadoCompra.CONFIRMADA);
+        this.setFechaCambioEstado(this.getFechaActual());
     }
 }
