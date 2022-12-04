@@ -7,19 +7,31 @@ import java.util.List;
 @Table(name="Tienda")
 public class Tienda {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name="nombre")
     private String nombre;
 
-    @OneToMany
-    @JoinColumn(name = "publicaciones_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "idTiendaAsociada", cascade = CascadeType.ALL)
+    //@JoinColumn(name = "tienda_id", referencedColumnName = "id")
     private List<Publicacion> publicaciones;
+/*
+    @OneToOne
+    @JoinColumn(name = "vendedor_id", referencedColumnName = "id")
+    private Vendedor vendedor;*/
+
+    @Column(name = "id_vendedor")
+    private Long idVendedor;
 
     public Tienda() {
         this.publicaciones = new ArrayList<>();
+    }
+
+    public Tienda(Long idVendedor) {
+        this.publicaciones = new ArrayList<>();
+        this.idVendedor = idVendedor;
     }
 
     public Long getId() {
@@ -39,7 +51,18 @@ public class Tienda {
     public List<Publicacion> getPublicaciones() {
         return publicaciones;
     }
+    public void setPublicaciones(List<Publicacion> publicaciones) {
+        this.publicaciones = publicaciones;
+    }
     public void agregarPublicacion(Publicacion publicacion) {
         this.publicaciones.add(publicacion);
+    }
+
+    public Long getIdVendedor() {
+        return idVendedor;
+    }
+
+    public void setIdVendedor(Long idVendedor) {
+        this.idVendedor = idVendedor;
     }
 }

@@ -1,17 +1,16 @@
 package utn.credicoop.msventas.app.dtos;
 
+import utn.credicoop.msventas.entities.MedioDePago;
+
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class VendedorDTO {
 
     private Long id;
-
     private String nombre;
-
     private String apellido;
-
-    private Set<MedioDePagoDTO> mediosDePago;
+    private Set<MedioDePago> mediosDePago;
 
     public VendedorDTO(){
         this.mediosDePago = new LinkedHashSet<>();
@@ -31,8 +30,12 @@ public class VendedorDTO {
         this.nombre = nombre;
     }
 
-    public Set<MedioDePagoDTO> getMediosDePago() {
+    public String getApellido() { return apellido; }
+    public void setApellido(String apellido) { this.apellido = apellido; }
+
+    public Set<MedioDePago> getMediosDePago() {
         return mediosDePago;
     }
-    public void agregarMedioDePago(MedioDePagoDTO medioDePago) { this.mediosDePago.add(medioDePago);}
+    public void setMediosDePago(Set<MedioDePago> mediosDePago) { this.mediosDePago = mediosDePago; }
+    public void agregarMedioDePago(MedioDePago medioDePago) { this.mediosDePago.add(medioDePago);}
 }

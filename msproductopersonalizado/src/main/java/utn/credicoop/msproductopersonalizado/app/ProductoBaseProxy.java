@@ -8,6 +8,9 @@ import utn.credicoop.msproductopersonalizado.app.dtos.ProductoBaseDTO;
 @FeignClient(name = "productobase")
 public interface ProductoBaseProxy {
 
-    @GetMapping("/productobase/proxy/{idProdBase}")
+    @GetMapping("/productobase/{idProdBase}/buscar")
     ProductoBaseDTO buscarPorId(@PathVariable("idProdBase") Long id);
+
+    @GetMapping("/productobase/{idProdBase}/existe")
+    boolean existeProductoBase(@PathVariable("idProdBase") Long id);
 }

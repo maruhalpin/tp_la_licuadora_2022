@@ -71,6 +71,8 @@ public class ProductoPersonalizado {
     public void setPrecioFinal(double precioFinal) { this.precioFinal = precioFinal; }
 
     public void calcularPrecioFinal(double precioProductoBase){
-        setPrecioFinal(precioProductoBase);
+        double precioPersonalizacion = personalizaciones.stream().mapToDouble(p -> p.getPrecio()).sum();
+        double precioFinal = precioPersonalizacion + precioProductoBase;
+        setPrecioFinal(precioFinal);
     }
 }

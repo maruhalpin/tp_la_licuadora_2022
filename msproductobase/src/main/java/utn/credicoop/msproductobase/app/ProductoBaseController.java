@@ -33,12 +33,15 @@ public class ProductoBaseController {
         }
     }
 
-    @GetMapping("/productobase/proxy/{idProdBase}")
+    @GetMapping("/productobase/{idProdBase}/buscar")
     public ProductoBaseDTO buscarPorId(@PathVariable("idProdBase") Long id){
         Optional<ProductoBase> productoBase = productoBaseJPA.findById(id);
         ProductoBaseDTO productoBaseDTO = new ProductoBaseDTO(productoBase);
         return productoBaseDTO;
     }
 
-
+    @GetMapping("/productobase/{idProdBase}/existe")
+    public boolean existeProductoBase(@PathVariable("idProdBase") Long id){
+        return productoBaseJPA.existsById(id);
+    }
 }

@@ -6,9 +6,7 @@ import java.util.List;
 public class TiendaDTO {
 
     private Long id;
-
     private String nombre;
-
     private List<PublicacionDTO> publicaciones;
 
     public TiendaDTO() {
@@ -32,6 +30,8 @@ public class TiendaDTO {
     public List<PublicacionDTO> getPublicaciones() {
         return publicaciones;
     }
+    public void setPublicaciones(List<PublicacionDTO> publicaciones) { this.publicaciones = publicaciones; }
+
     public void agregarPublicacion(PublicacionDTO publicacion) {
         this.publicaciones.add(publicacion);
     }

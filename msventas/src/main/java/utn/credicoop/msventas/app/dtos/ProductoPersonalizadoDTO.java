@@ -1,7 +1,4 @@
-package utn.credicoop.msproductopersonalizado.app.dtos;
-
-import utn.credicoop.msproductopersonalizado.entities.Personalizacion;
-import utn.credicoop.msproductopersonalizado.entities.ProductoPersonalizado;
+package utn.credicoop.msventas.app.dtos;
 
 import java.util.LinkedHashSet;
 import java.util.Optional;
@@ -11,21 +8,14 @@ public class ProductoPersonalizadoDTO {
 
     private Long id;
     private Long idProductoBase;
-    private Set<Personalizacion> personalizaciones;
+    private Set<PersonalizacionDTO> personalizaciones;
     private double precioFinal;
 
-    public ProductoPersonalizadoDTO(Long id, Long idProductoBase, Set<Personalizacion> personalizaciones, double precioFinal){
+    public ProductoPersonalizadoDTO(Long id, Long idProductoBase, Set<PersonalizacionDTO> personalizaciones, double precioFinal){
         this.id = id;
         this.idProductoBase = idProductoBase;
         this.personalizaciones = personalizaciones;
         this.precioFinal = precioFinal;
-    }
-
-    public ProductoPersonalizadoDTO(Optional<ProductoPersonalizado> productoPersonalizado){
-        this.id = productoPersonalizado.get().getId();
-        this.idProductoBase = productoPersonalizado.get().getIdProductoBase();
-        this.personalizaciones = productoPersonalizado.get().getPersonalizaciones();
-        this.precioFinal = productoPersonalizado.get().getPrecioFinal();
     }
 
     public ProductoPersonalizadoDTO() {
@@ -45,12 +35,12 @@ public class ProductoPersonalizadoDTO {
         this.idProductoBase = productoBase;
     }
 
-    public Set<Personalizacion> getPersonalizaciones() {
+    public Set<PersonalizacionDTO> getPersonalizaciones() {
         return personalizaciones;
     }
-    public void setPersonalizaciones(Set<Personalizacion> personalizaciones) { this.personalizaciones = personalizaciones; }
+    public void setPersonalizaciones(Set<PersonalizacionDTO> personalizaciones) { this.personalizaciones = personalizaciones; }
 
-    public void agregarPersonalizacion(Personalizacion personalizacion) {
+    public void agregarPersonalizacion(PersonalizacionDTO personalizacion) {
         this.personalizaciones.add(personalizacion);
     }
 

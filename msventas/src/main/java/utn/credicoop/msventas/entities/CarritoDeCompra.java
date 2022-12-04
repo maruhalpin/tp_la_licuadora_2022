@@ -13,12 +13,10 @@ public class CarritoDeCompra {
     private Long id;
 
     @OneToOne
-    //@Column(name = "comprador")
     @JoinColumn(name = "comprador_id", referencedColumnName = "id")
     private Comprador comprador;
 
     @ManyToMany
-    @Column(name = "items")
     private List<Item> items;
 
     @Column(name = "precioFinal")

@@ -12,7 +12,9 @@ public class ProductoBaseDTO {
     private int tiempoEstimadoDeFabricacion;
     private Set<PosiblePersonalizacionDTO> posiblesPersonalizaciones;
 
-    public ProductoBaseDTO() {}
+    public ProductoBaseDTO() {
+        this.posiblesPersonalizaciones = new LinkedHashSet<>();
+    }
 
     public ProductoBaseDTO(Long id, String nombre, double precioBase, String descripcion, int tiempoEstimadoDeFabricacion, Set<PosiblePersonalizacionDTO> posiblesPersonalizaciones) {
         this.id = id;
@@ -20,7 +22,7 @@ public class ProductoBaseDTO {
         this.precioBase = precioBase;
         this.descripcion = descripcion;
         this.tiempoEstimadoDeFabricacion = tiempoEstimadoDeFabricacion;
-        this.posiblesPersonalizaciones = new LinkedHashSet<>();
+        this.posiblesPersonalizaciones = posiblesPersonalizaciones;
     }
 
     public Long getId() {

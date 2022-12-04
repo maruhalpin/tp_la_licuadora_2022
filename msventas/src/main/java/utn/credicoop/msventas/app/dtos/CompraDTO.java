@@ -1,5 +1,7 @@
 package utn.credicoop.msventas.app.dtos;
 
+import utn.credicoop.msventas.entities.EstadoCompra;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -8,17 +10,11 @@ import java.util.List;
 public class CompraDTO {
 
     private Long id;
-
     private LocalDate fecha;
-
     private LocalTime hora;
-
     private List<ItemDTO> items;
-
     private MedioDePagoDTO formaDePago;
-
-    private EstadoCompraDTO estado;
-
+    private EstadoCompra estado;
     private LocalDate fechaCambioEstado;
 
     public CompraDTO (){
@@ -42,6 +38,7 @@ public class CompraDTO {
     public List<ItemDTO> getItems() {
         return items;
     }
+    public void setItems(List<ItemDTO> items) { this.items = items; }
     public void agregarItems(ItemDTO item) {
         this.items.add(item);
     }
@@ -53,10 +50,10 @@ public class CompraDTO {
         this.formaDePago = formaDePago;
     }
 
-    public EstadoCompraDTO getEstado() {
+    public EstadoCompra getEstado() {
         return estado;
     }
-    public void setEstado(EstadoCompraDTO estado) {
+    public void setEstado(EstadoCompra estado) {
         this.estado = estado;
     }
 

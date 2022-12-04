@@ -13,11 +13,8 @@ import java.util.List;
 public class CarritoDeCompraDTO {
 
     private Long id;
-
-    private Comprador comprador;
-
-    private List<Item> items;
-
+    private CompradorDTO comprador;
+    private List<ItemDTO> items;
     private double precioFinal;
 
     public CarritoDeCompraDTO(){
@@ -31,10 +28,11 @@ public class CarritoDeCompraDTO {
         this.id = id;
     }
 
-    public List<Item> getItems() {
+    public List<ItemDTO> getItems() {
         return items;
     }
-    public void agregarItems(Item item) {
+    public void setItems(List<ItemDTO> items) { this.items = items; }
+    public void agregarItems(ItemDTO item) {
         this.items.add(item);
     }
 

@@ -1,5 +1,7 @@
 package utn.credicoop.msventas.entities;
 
+import utn.credicoop.msventas.converters.LocalDateAttributeConverter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,7 +12,7 @@ import java.util.List;
 @Table(name="Compra")
 public class Compra {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -20,19 +22,19 @@ public class Compra {
     @Column(name = "hora")
     private LocalTime hora;
 
-    @ManyToMany
-    @Column(name = "items")
-    private List<Item> items;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Item> items; // Cambiar por carrito
 
     @ManyToOne
-    @JoinColumn(name = "formaDePago_id", referencedColumnName = "id")
+    @JoinColumn(name = "forma_de_pago_id", referencedColumnName = "id")
     private MedioDePago formaDePago;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estado")
     private EstadoCompra estado;
 
-    @Column(name = "fechaCambioEstado")
+    @Column(name = "fecha_cambio_estado")
+    @Convert(converter = LocalDateAttributeConverter.class)
     private LocalDate fechaCambioEstado;
 
     public Compra (){
