@@ -1,5 +1,6 @@
 package utn.credicoop.msventas.app;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,7 @@ import utn.credicoop.msventas.app.dtos.ProductoPersonalizadoDTO;
 import utn.credicoop.msventas.app.dtos.PublicacionDTO;
 import utn.credicoop.msventas.db.PublicacionJPA;
 import utn.credicoop.msventas.db.TiendaJPA;
+import utn.credicoop.msventas.entities.EstadoPublicacion;
 import utn.credicoop.msventas.entities.Publicacion;
 import utn.credicoop.msventas.entities.Tienda;
 
@@ -27,6 +29,7 @@ public class PublicacionController {
     @Resource
     TiendaJPA tiendaJPA;
 
+    @Operation(summary = "Genera una publicación para una tienda en específico")
     @Transactional
     @PostMapping("/publicacion/generar/tienda/{idTienda}")
     public @ResponseBody ResponseEntity<String> crearPublicacion(@RequestBody PublicacionDTO publicacionDTO, @PathVariable("idTienda") Long id){
@@ -42,7 +45,7 @@ public class PublicacionController {
 
                 publicacionJPA.save(publicacion);
 
-                return new ResponseEntity<>("Publicación creada en " + tiendaJPA.findById(id).get().getNombre() + "." , HttpStatus.OK);
+                return new ResponseEntity<>("Publicación (ID: " + publicacion.getId() + ") creada en " + tiendaJPA.findById(id).get().getNombre() + "." , HttpStatus.OK);
             } else {
                 return new ResponseEntity<>("No se pudo crear la publicación, producto inexistente." , HttpStatus.CONFLICT);
             }
@@ -51,6 +54,7 @@ public class PublicacionController {
         }
     }
 
+    @Operation(summary = "El estado de la publicación se asignará como CANCELADA")
     @Transactional
     @PostMapping("/publicacion/{idPublicacion}/bajar")
     public @ResponseBody ResponseEntity<String> bajarPublicacion(@PathVariable("idPublicacion") Long id){
@@ -65,6 +69,7 @@ public class PublicacionController {
         }
     }
 
+    @Operation(summary = "El estado de la publicación se asignará como PAUSADA")
     @Transactional
     @PostMapping("/publicacion/{idPublicacion}/pausar")
     public @ResponseBody ResponseEntity<String> pausarPublicacion(@PathVariable("idPublicacion") Long id){
@@ -79,6 +84,7 @@ public class PublicacionController {
         }
     }
 
+    @Operation(summary = "El estado de la publicación se asignará como ACTIVA")
     @Transactional
     @PostMapping("/publicacion/{idPublicacion}/activar")
     public @ResponseBody ResponseEntity<String> activarPublicacion(@PathVariable("idPublicacion") Long id){

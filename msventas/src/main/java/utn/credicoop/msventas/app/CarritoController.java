@@ -1,5 +1,6 @@
 package utn.credicoop.msventas.app;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ public class CarritoController {
     @Autowired
     CarritoDeCompraJPA carritoDeCompraJPA;
 
+    @Operation(summary = "Genera un carrito de compras")
     @Transactional
     @PostMapping("/carrito/generar")
     public @ResponseBody ResponseEntity<String> generarCarrito(@RequestBody CarritoDeCompraDTO carritoDeCompraDTO){
